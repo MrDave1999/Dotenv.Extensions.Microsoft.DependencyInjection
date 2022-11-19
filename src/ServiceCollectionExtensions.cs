@@ -56,7 +56,7 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection.</param>
     /// <param name="provider">The environment variables provider.</param>
     /// <returns>An instance that allows access to the environment variables.</returns>
-    private static TSettings AddAppSettings<TSettings>(this IServiceCollection services, IEnvironmentVariablesProvider provider)
+    private static TSettings AddTSettings<TSettings>(this IServiceCollection services, IEnvironmentVariablesProvider provider)
         where TSettings : class, new()
     {
         var settings = new EnvBinder(provider).Bind<TSettings>();
@@ -93,7 +93,7 @@ public static class ServiceCollectionExtensions
                           .AddEnvFiles(paths)
                           .Load();
 
-        return services.AddAppSettings<TSettings>(envVars);
+        return services.AddTSettings<TSettings>(envVars);
     }
 
     /// <summary>
@@ -139,6 +139,6 @@ public static class ServiceCollectionExtensions
             loader.SetEnvironmentName(environmentName);
 
         var envVars = loader.LoadEnv();
-        return services.AddAppSettings<TSettings>(envVars);
+        return services.AddTSettings<TSettings>(envVars);
     }
 }
