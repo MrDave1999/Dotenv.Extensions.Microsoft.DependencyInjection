@@ -22,7 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars using a service.
-        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.Load"/> method.
+        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.Load()"/> method.
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <exception cref="ArgumentNullException"><c>services</c> is <c>null</c>.</exception>
@@ -32,7 +32,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars using a service.
-        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.Load"/> method.
+        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.Load()"/> method.
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="paths">The .env files paths to add.</param>
@@ -66,7 +66,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars using a service.
-        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.Load"/> method.
+        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.Load()"/> method.
         /// </summary>
         /// <typeparam name="TSettings">The type of the new instance to bind.</typeparam>
         /// <param name="services">The service collection.</param>
@@ -77,7 +77,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars using a service.
-        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.Load"/> method.
+        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.Load()"/> method.
         /// </summary>
         /// <typeparam name="TSettings">The type of the new instance to bind.</typeparam>
         /// <param name="services">The service collection.</param>
@@ -98,7 +98,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars based on the environment (development, test, staging or production).
-        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.LoadEnv"/> method.
+        /// This registers <see cref="IEnvReader" /> as a singleton and calls the <see cref="EnvLoader.LoadEnv()"/> method.
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="basePath">The base path where the .env files will be located.</param>
@@ -120,7 +120,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds the environment vars based on the environment (development, test, staging or production).
-        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.LoadEnv"/> method.
+        /// This registers <typeparamref name="TSettings" /> as a singleton and calls the <see cref="EnvLoader.LoadEnv()"/> method.
         /// </summary>
         /// <typeparam name="TSettings">The type of the new instance to bind.</typeparam>
         /// <param name="services">The service collection.</param>
