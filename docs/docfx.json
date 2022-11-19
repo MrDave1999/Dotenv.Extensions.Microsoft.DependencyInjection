@@ -55,7 +55,7 @@
       "_appFooter": "Copyright 2022-2023 <b>DotEnv.Core</b>",
       "_enableSearch": true,
       "_gitContribute": {
-        "repo": "https://github.com/MrDave1999/dotenv.core.Extensions.Microsoft.DependencyInjection",
+        "repo": "https://github.com/MrDave1999/Dotenv.Extensions.Microsoft.DependencyInjection",
         "branch": "master"
       }
     },
