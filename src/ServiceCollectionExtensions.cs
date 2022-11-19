@@ -7,6 +7,9 @@ public static class ServiceCollectionExtensions
 {
     private const string DefaultEnvFileName = ".env";
 
+    private static IEnvironmentVariablesProvider Load(params string[] paths)
+        => new EnvLoader().AddEnvFiles(paths).Load();
+
     /// <summary>
     /// This registers <see cref="IEnvReader" /> as a singleton.
     /// </summary>
@@ -42,10 +45,7 @@ public static class ServiceCollectionExtensions
     public static IEnvReader AddDotEnv(this IServiceCollection services, params string[] paths)
     {
         _ = services ?? throw new ArgumentNullException(nameof(services));
-        var envVars = new EnvLoader()
-                          .AddEnvFiles(paths)
-                          .Load();
-
+        var envVars = Load(paths);
         return services.AddEnvReader(envVars);
     }
 
@@ -89,10 +89,7 @@ public static class ServiceCollectionExtensions
         where TSettings : class, new()
     {
         _ = services ?? throw new ArgumentNullException(nameof(services));
-        var envVars = new EnvLoader()
-                          .AddEnvFiles(paths)
-                          .Load();
-
+        var envVars = Load(paths);
         return services.AddTSettings<TSettings>(envVars);
     }
 
@@ -108,13 +105,7 @@ public static class ServiceCollectionExtensions
     public static IEnvReader AddCustomEnv(this IServiceCollection services, string basePath = null, string environmentName = null)
     {
         _ = services ?? throw new ArgumentNullException(nameof(services));
-        var loader = new EnvLoader();
-        if (basePath is not null)
-            loader.SetBasePath(basePath);
-        if (environmentName is not null)
-            loader.SetEnvironmentName(environmentName);
-
-        var envVars = loader.LoadEnv();
+        var envVars = LoadEnv(basePath, environmentName);
         return services.AddEnvReader(envVars);
     }
 
@@ -132,13 +123,17 @@ public static class ServiceCollectionExtensions
         where TSettings : class, new()
     {
         _ = services ?? throw new ArgumentNullException(nameof(services));
+        var envVars = LoadEnv(basePath, environmentName);
+        return services.AddTSettings<TSettings>(envVars);
+    }
+
+    private static IEnvironmentVariablesProvider LoadEnv(string basePath = null, string environmentName = null)
+    {
         var loader = new EnvLoader();
         if (basePath is not null)
             loader.SetBasePath(basePath);
         if (environmentName is not null)
             loader.SetEnvironmentName(environmentName);
-
-        var envVars = loader.LoadEnv();
-        return services.AddTSettings<TSettings>(envVars);
+        return loader.LoadEnv();
     }
 }
