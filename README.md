@@ -12,6 +12,13 @@ This project was created to add support for DI and can be used in ASP.NET Core p
 
 Don't forget to visit the library [website](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection) where you can find [API documentation](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection/api/Microsoft.Extensions.DependencyInjection.html).
 
+## Advantages
+
+The advantages of using this wrapper are:
+- No need to manually call the `EnvLoader.Load` method to set the environment variables from the .env file.
+- No need to manually call the `EnvBinder.Bind` method to map the keys of the .env file with the model properties.
+- No need to manually register the service as a singleton: `IEnvReader` or `AppSettings`.
+
 ## Installation
 
 If you're want to install the package from Visual Studio, you must open the project/solution in Visual Studio, and open the console using the **Tools** > **NuGet Package Manager** > **Package Manager Console** command and run the install command:
