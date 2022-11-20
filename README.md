@@ -10,7 +10,7 @@ This library adds extension methods for the [Microsoft.Extensions.DependencyInje
 
 This project was created to add support for DI and can be used in ASP.NET Core projects.
 
-Don't forget to visit the official library [website](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection) where you can find [API documentation](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection/api/Microsoft.DependencyInjection.html).
+Don't forget to visit the library [website](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection) where you can find [API documentation](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection/api/Microsoft.DependencyInjection.html).
 
 ## Installation
 
@@ -25,18 +25,12 @@ dotnet add package Dotenv.Extensions.Microsoft.DependencyInjection
 
 ## Usage
 
-You only need to invoke the `AddDotEnv` method to add the service to the container:
+You only need to invoke the `AddDotEnv` method to add the environment vars using a service:
 ```cs
 // Example in ASP.NET Core 6+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// Adds the environment vars using a service.
 builder.Services.AddDotEnv<AppSettings>();
 
 var app = builder.Build();
@@ -66,13 +60,12 @@ public class ExampleController : ControllerBase
 
 ### Load .env file based on environment
 
-Use the `AddCustomEnv` method to add the service to the container:
+Use the `AddCustomEnv` method to adds the environment vars based on the environment (development, test, staging or production):
 ```cs
 // Example in ASP.NET Core 6+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Adds the environment vars based on the environment (development, test, staging or production).
 builder.Services.AddCustomEnv<AppSettings>();
 
 var app = builder.Build();
@@ -94,11 +87,10 @@ It does several things:
 
   It should be noted that the default environment will be `development` or `dev` if the environment is never specified with `DOTNET_ENV`.
 
-- Invokes the `Bind` method of the `EnvBinder` class to map the keys of the .env file with the **AppSettings** properties.
+- Invokes the `Bind` method of the `EnvBinder` class to map the keys of the .env file with the `AppSettings` properties.
 - Registers `AppSettings` as a singleton for the DI container.
 
 Done, use `AppSettings` on the controllers and let the container perform the dependency injection.
-
 
 ## Contribution
 
