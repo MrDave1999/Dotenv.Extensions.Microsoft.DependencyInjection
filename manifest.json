@@ -17,8 +17,8 @@
       "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
-          "hash": "9cDiLldV+66vVsAEfYw6XAxj+mF2ksgbX0VQkRGA9Cg="
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddDotEnv.html",
+          "hash": "3tp95hgrDFq5gTlxFVhbWXLzvdk/47Z5njCVjtPwk5Q="
         }
       },
       "is_incremental": false,
@@ -41,8 +41,8 @@
       "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddDotEnv.html",
-          "hash": "3tp95hgrDFq5gTlxFVhbWXLzvdk/47Z5njCVjtPwk5Q="
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
+          "hash": "9cDiLldV+66vVsAEfYw6XAxj+mF2ksgbX0VQkRGA9Cg="
         }
       },
       "is_incremental": false,
@@ -113,7 +113,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "fiA0UOUChJWlPVbIDelCia8NB4hv+50Fry7H+GcM2mM="
+          "hash": "ygn3k8zfqTrYsqm7ybhqnejxsA/FIqFzTxe86RUAGv4="
         }
       },
       "is_incremental": false,
@@ -145,7 +145,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 2
+          "skipped_file_count": 1
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
