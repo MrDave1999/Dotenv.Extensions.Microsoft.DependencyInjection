@@ -31,13 +31,14 @@ You only need to invoke the `AddDotEnv` method to add the environment vars using
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDotEnv<AppSettings>();
+IServiceCollection services = builder.Services;
+services.AddDotEnv<AppSettings>();
 
 var app = builder.Build();
 ```
 The following line of code:
 ```cs
-builder.Services.AddDotEnv<AppSettings>();
+services.AddDotEnv<AppSettings>();
 ```
 It does several things:
 - Invokes the `Load` method of the `EnvLoader` class to set the environment variables from a file named `.env`.
@@ -66,13 +67,14 @@ Use the `AddCustomEnv` method to adds the environment vars based on the environm
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddCustomEnv<AppSettings>();
+IServiceCollection services = builder.Services;
+services.AddCustomEnv<AppSettings>();
 
 var app = builder.Build();
 ```
 The following line of code:
 ```cs
-builder.Services.AddCustomEnv<AppSettings>();
+services.AddCustomEnv<AppSettings>();
 ```
 It does several things:
 - Invokes the `LoadEnv` method of the `EnvLoader` class to set the environment variables from a .env file.
