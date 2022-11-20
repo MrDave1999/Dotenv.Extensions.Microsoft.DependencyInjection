@@ -10,7 +10,7 @@ This library adds extension methods for the [Microsoft.Extensions.DependencyInje
 
 This project was created to add support for DI and can be used in ASP.NET Core projects.
 
-Don't forget to visit the library [website](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection) where you can find [API documentation](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection/api/Microsoft.DependencyInjection.html).
+Don't forget to visit the library [website](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection) where you can find [API documentation](https://mrdave1999.github.io/Dotenv.Extensions.Microsoft.DependencyInjection/api/Microsoft.Extensions.DependencyInjection.html).
 
 ## Installation
 
