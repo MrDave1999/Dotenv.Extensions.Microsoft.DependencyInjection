@@ -92,12 +92,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDotEnv&lt;AppSettings&gt;();
+IServiceCollection services = builder.Services;
+services.AddDotEnv&lt;AppSettings&gt;();
 
 var app = builder.Build();
 </code></pre>
 <p>The following line of code:</p>
-<pre><code class="lang-cs">builder.Services.AddDotEnv&lt;AppSettings&gt;();
+<pre><code class="lang-cs">services.AddDotEnv&lt;AppSettings&gt;();
 </code></pre>
 <p>It does several things:</p>
 <ul>
