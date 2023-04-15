@@ -10,84 +10,102 @@ public class ServiceCollectionExtensionsTests
     [TestMethod]
     public void AddDotEnvWithDefaultEnvFileName()
     {
+        // Arrange
         var services = new ServiceCollection();
         SetEnvironmentVariable(Summaries, null);
 
+        // Act
         services.AddDotEnv();
-
         var reader = services.BuildServiceProvider().GetRequiredService<IEnvReader>();
-        Assert.AreEqual(Expected, actual: reader[Summaries]);
+
+        // Assert
+        reader[Summaries].Should().Be(Expected);
     }
 
     [TestMethod]
     public void AddDotEnvWithCustomConfiguration()
     {
+        // Arrange
         var services = new ServiceCollection();
         SetEnvironmentVariable(Summaries, null);
 
+        // Act
         services.AddDotEnv(ConfigEnvPath);
-
         var reader = services.BuildServiceProvider().GetRequiredService<IEnvReader>();
-        Assert.AreEqual(Expected, actual: reader[Summaries]);
+
+        // Assert
+        reader[Summaries].Should().Be(Expected);
     }
 
     [TestMethod]
     public void AddDotEnvGenericWithDefaultEnvFileName()
     {
+        // Arrange
         var services = new ServiceCollection();
         SetEnvironmentVariable(Summaries, null);
 
+        // Act
         services.AddDotEnv<AppSettings>();
-
         var settings = services.BuildServiceProvider().GetRequiredService<AppSettings>();
-        Assert.AreEqual(Expected, actual: settings.Summaries);
+
+        // Assert
+        settings.Summaries.Should().Be(Expected);
     }
 
     [TestMethod]
     public void AddDotEnvGenericWithCustomConfiguration()
     {
+        // Arrange
         var services = new ServiceCollection();
         SetEnvironmentVariable(Summaries, null);
 
+        // Act
         services.AddDotEnv<AppSettings>(ConfigEnvPath);
-
         var settings = services.BuildServiceProvider().GetRequiredService<AppSettings>();
-        Assert.AreEqual(Expected, actual: settings.Summaries);
+
+        // Assert
+        settings.Summaries.Should().Be(Expected);
     }
 
     [TestMethod]
     public void AddCustomEnvWithCustomConfiguration()
     {
+        // Arrange
         var services = new ServiceCollection();
         Env.CurrentEnvironment = null;
 
+        // Act
         services.AddCustomEnv(
             basePath: "env_files/environment/dev", 
             environmentName: "dev"
         );
-
         var reader = services.BuildServiceProvider().GetRequiredService<IEnvReader>();
-        Assert.AreEqual(expected: "1", actual: reader["DEV_ENV"]);
-        Assert.AreEqual(expected: "1", actual: reader["DEV_ENV_DEV"]);
-        Assert.AreEqual(expected: "1", actual: reader["DEV_ENV_DEV_LOCAL"]);
-        Assert.AreEqual(expected: "1", actual: reader["DEV_ENV_LOCAL"]);
+
+        // Asserts
+        reader["DEV_ENV"].Should().Be("1");
+        reader["DEV_ENV_DEV"].Should().Be("1");
+        reader["DEV_ENV_DEV_LOCAL"].Should().Be("1");
+        reader["DEV_ENV_LOCAL"].Should().Be("1");
     }
 
     [TestMethod]
     public void AddCustomEnvGenericWithCustomConfiguration()
     {
+        // Arrange
         var services = new ServiceCollection();
         Env.CurrentEnvironment = null;
 
+        // Act
         services.AddCustomEnv<SettingsProduction>(
             basePath: "env_files/environment/production", 
             environmentName: "production"
         );
-
         var settings = services.BuildServiceProvider().GetRequiredService<SettingsProduction>();
-        Assert.AreEqual(expected: "1", actual: settings.ProdEnv);
-        Assert.AreEqual(expected: "1", actual: settings.ProdEnvProd);
-        Assert.AreEqual(expected: "1", actual: settings.ProdEnvProdLocal);
-        Assert.AreEqual(expected: "1", actual: settings.ProdEnvLocal);
+
+        // Asserts
+        settings.ProdEnv.Should().Be("1");
+        settings.ProdEnvProd.Should().Be("1");
+        settings.ProdEnvProdLocal.Should().Be("1");
+        settings.ProdEnvLocal.Should().Be("1");
     }
 }
